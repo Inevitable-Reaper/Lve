@@ -7,6 +7,7 @@ import {
   useVoiceChat,
 } from "../liveavatar";
 import { SessionState } from "@heygen/liveavatar-web-sdk";
+import { MicIcon, MicOffIcon, CloseIcon } from "./Icons";
 
 const LiveAvatarSessionComponent: React.FC<{
   onSessionStopped: () => void;
@@ -64,25 +65,25 @@ const LiveAvatarSessionComponent: React.FC<{
       />
 
       {/* Floating Bottom Controls */}
-      <div className="absolute bottom-12 left-0 right-0 flex justify-center items-center gap-6 z-20">
+      <div className="flex items-center gap-6 fixed bottom-10 left-1/2 transform -translate-x-1/2 z-50">
         {/* Mic Toggle Button */}
         <button
           onClick={() => (isMuted ? unmute() : mute())}
-          className={`min-w-[140px] px-8 py-3 rounded-full font-bold text-white transition-all shadow-xl text-lg ${
+          className={`p-4 rounded-full transition-all shadow-lg ${
             isMuted 
-              ? "bg-red-600 hover:bg-red-700 ring-2 ring-red-400" 
-              : "bg-green-600 hover:bg-green-700 ring-2 ring-green-400"
+              ? "bg-red-500 text-white hover:bg-red-600" 
+              : "bg-white text-black hover:bg-gray-200"
           }`}
         >
-          {isMuted ? "Mic Off" : "Mic On"}
+          {isMuted ? <MicOffIcon size={24} /> : <MicIcon size={24} />}
         </button>
 
-        {/* Active Cancel Button */}
+        {/* End Session Button (Working Cancel) */}
         <button
           onClick={() => stopSession()}
-          className="min-w-[140px] bg-zinc-800/80 hover:bg-zinc-700 text-white px-8 py-3 rounded-full font-bold transition-all shadow-xl border border-white/20 text-lg"
+          className="bg-red-600 text-white hover:bg-red-700 p-4 rounded-full transition-all shadow-lg border border-white/20"
         >
-          Cancel
+          <CloseIcon size={24} />
         </button>
       </div>
     </div>

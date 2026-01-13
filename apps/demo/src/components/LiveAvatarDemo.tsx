@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { LiveAvatarSession } from "./LiveAvatarSession";
+import { PlayIcon, CloseIcon } from "./Icons"; // Changed MicIcon to PlayIcon
 
 export const LiveAvatarDemo = () => {
   const [sessionToken, setSessionToken] = useState("");
@@ -37,18 +38,23 @@ export const LiveAvatarDemo = () => {
               {"Error: " + error}
             </div>
           )}
-          <div className="flex items-center gap-4">
+          
+          {/* Updated Buttons Container */}
+          <div className="flex items-center gap-6 fixed bottom-10 left-1/2 transform -translate-x-1/2 z-50">
             <button
               onClick={handleStart}
-              className="min-w-[140px] bg-white text-black hover:bg-gray-200 px-8 py-3 rounded-full font-bold transition-all shadow-lg text-lg"
+              className="bg-white text-black hover:bg-gray-200 p-4 rounded-full transition-all shadow-lg"
+              aria-label="Start"
             >
-              Start
+              {/* Using the new PlayIcon here */}
+              <PlayIcon size={24} />
             </button>
             <button
               disabled
-              className="min-w-[140px] bg-gray-600/50 text-gray-400 px-8 py-3 rounded-full font-bold cursor-not-allowed border border-gray-500/30 text-lg"
+              className="bg-gray-600/50 text-gray-400 p-4 rounded-full cursor-not-allowed border border-gray-500/30"
+              aria-label="Cancel"
             >
-              Cancel
+              <CloseIcon size={24} />
             </button>
           </div>
         </div>
